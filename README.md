@@ -9,6 +9,21 @@ My topic is:
 ## week 2 - Reading
 
 ## week 3 - Reading
+Great general explaination videos of the concepts behind wave function collapse 
+https://www.youtube.com/watch?v=20KHNA9jTsE
+https://www.youtube.com/watch?v=2SuvO4Gi7uY
+https://www.youtube.com/watch?v=0bcZb-SsnrA (yes i know mitch posted this but id already watched it anyway)
+
+things that I have found but have yet to take an extensive look at
+https://oskarstalberg.com/game/wave/wave.html
+
+https://marian42.de/article/wfc/
+https://bolddunkley.itch.io/wave-function-collapse
+
+https://github.com/mxgmn/WaveFunctionCollapse
+https://github.com/shawnridgeway/wfc
+https://github.com/zfedoran/go-wfc?ref=golangexample.com
+https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/
 
 ## week 4 - Reading
 
