@@ -18,12 +18,12 @@ things that I have found but have yet to take an extensive look at
 https://oskarstalberg.com/game/wave/wave.html  
 
 https://marian42.de/article/wfc/  
+https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/  
 https://bolddunkley.itch.io/wave-function-collapse  
 
 https://github.com/mxgmn/WaveFunctionCollapse  
 https://github.com/shawnridgeway/wfc  
 https://github.com/zfedoran/go-wfc?ref=golangexample.com  
-https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/  
 
 /* sources on other terrain generation algorthisms */
 
