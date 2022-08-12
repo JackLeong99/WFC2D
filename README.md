@@ -25,6 +25,11 @@ https://github.com/shawnridgeway/wfc
 https://github.com/zfedoran/go-wfc?ref=golangexample.com  
 https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/  
 
+/* sources on other terrain generation algorthisms */
+
+https://docs.google.com/document/d/1HuJIEOtTYCtSHK6R-sp4LC2gk1RDL_mfoFL6Qn_wdkE/edit  
+https://docs.google.com/document/d/1UfiFz4xAPtGd-1X2JNE0Jy2z-BLkze1PE4Fo9u-QeYo/edit  
+
 ## week 4 - Reading
 
 ## week 5 - Reading & Research Report
