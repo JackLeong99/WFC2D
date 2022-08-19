@@ -32,6 +32,8 @@ things that I have found but have yet to take an extensive look at (Update: have
 
 ## week 4 - Reading
 
+What I did this since last week: Since last week was my first real week and I spent most of it just finding starting points for research,  this week I spent the time to better read through these sources and understand them fully as well as which ones I can still learn from and which I have gotten all I can.
+
 Better defining my project goals:  
   - create a simple wfc implementation with 5 tiles: one blank and four "T" shaped, one in each possible rotation.  
   - expanding this to a more complex tile set to generate a 2D "terrain" or "landscape" similar to Oskar stalbergs "wave", with the main difference functionally being   that this algorithm should handle asymetrical tiles.  
