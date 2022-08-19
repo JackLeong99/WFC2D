@@ -38,6 +38,7 @@ Better defining my project goals:
   - going back to the first tileset/algorithm but adding random rotation such that the number of tiles is reduced to two, one blank and one "T" where the "T" tile can   be randomly rotated to functionally fill the role of 4 tiles.  
   - create an equivelent 3D implementation of the second algorithm, one that can handle asymetrical, predefined tiles without rotation.  
   - create a 3D implementation that reduces the number of premade tiles by handling random rotation.  
+  - Write accompanying technical document.  
 
 [Implementation video on tile model](https://www.youtube.com/watch?v=rI_y2GAlQFM)  
 [Processing article on WFC with additional sources on implementation](https://discourse.processing.org/t/wave-collapse-function-algorithm-in-processing/12983)  
