@@ -106,6 +106,8 @@ Tangible outputs:
 
 ## week 8 - Prototyping
 
+https://github.com/atalantus/WFC-Unity-Example
+
 ## week 9 - Prototyping
 
 ## week 10 - Prototyping
