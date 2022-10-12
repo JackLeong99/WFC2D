@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,9 @@ public class Tile : ScriptableObject
     }
 }
 
-public struct Edge //this cant be a sctruct because it doesnt render in the inspector so defining edges is gonna be so painful
+[Serializable]
+
+public struct Edge
 {
     public List<char> code;
 
