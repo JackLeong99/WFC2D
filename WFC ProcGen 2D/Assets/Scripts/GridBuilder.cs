@@ -73,7 +73,7 @@ public class GridBuilder : MonoBehaviour
                 }
             }
         FlattenCells();
-        if (autoCollapse) CheckDone();
+        if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
     }
 
     public void FlattenCells()
