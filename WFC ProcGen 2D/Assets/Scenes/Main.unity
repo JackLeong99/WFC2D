@@ -154,9 +154,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 10
   height: 10
-  tile: {fileID: 48608895130262063, guid: 2a5732da7f160b748bc1d76fdb26ab71, type: 3}
+  tile: {fileID: 48608895130262063, guid: 37da4d7f632dea14899d448cc557cc97, type: 3}
   modules:
-  - {fileID: 11400000, guid: d323c1981899f3f46b88cf714ae0290a, type: 2}
+  - {fileID: 11400000, guid: af5e462ba4b20f747b214a0a37eb3d34, type: 2}
+  - {fileID: 11400000, guid: 71eb4efb5a955a34b9c16e65cde0b08b, type: 2}
+  - {fileID: 11400000, guid: 9244ba59157337c4db9d64b480754a3d, type: 2}
+  - {fileID: 11400000, guid: 3b40540e4b485794b9cab50fc7aca3ca, type: 2}
+  - {fileID: 11400000, guid: 689ebabe103306a459a3a611c4ab851a, type: 2}
+  orderedCells: []
 --- !u!4 &203494857
 Transform:
   m_ObjectHideFlags: 0
@@ -208,7 +213,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -225,7 +230,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

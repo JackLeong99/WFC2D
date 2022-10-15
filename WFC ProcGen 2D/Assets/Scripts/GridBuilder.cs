@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class GridBuilder : MonoBehaviour
 {
+    public bool autoCollapse;
     public int width;
     public int height;
     public GameObject tile;
     public List<Module> modules;
     public Cell[,] cells;
+    public List<Cell> orderedCells;
+    private Vector2 spriteSize;
     
     void Start()
     {
+        //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
+        spriteSize = new Vector2(modules[0].tileSprite.rect.size.x / 100f, modules[0].tileSprite.rect.size.y / 100f);
+        //Debug.Log("x: " + spriteSize.x + ", y: " + spriteSize.y);
+
+        //Genereate the grid lmao
         GenerateGrid();
     }
 
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown("r")) 
+        {
+            GenerateGrid();
+        }
     }
 
     public void GenerateGrid() 
@@ -26,7 +37,8 @@ public class GridBuilder : MonoBehaviour
 
         cells = new Cell[width, height];
 
-        var scale = tile.transform.localScale;
+        //var scale = tile.transform.localScale;
+        var scale = spriteSize;
         var origin = transform.position;
         var bottomLeft = new Vector2
             (
@@ -60,13 +72,18 @@ public class GridBuilder : MonoBehaviour
                     bottomCell.neighbours[2] = cell;
                 }
             }
+        FlattenCells();
+        if (autoCollapse) CheckDone();
     }
 
-    public void Solve()
+    public void FlattenCells()
     {
-
-
-
+        orderedCells = new List<Cell>(cells.GetLength(0) * cells.GetLength(1));
+        for (var i = 0; i < cells.GetLength(0); i++)
+            for (var j = 0; j < cells.GetLength(1); j++)
+            {
+                orderedCells.Add(cells[i, j]);
+            }
     }
 
     public void Reset()
@@ -75,5 +92,23 @@ public class GridBuilder : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public void CheckDone() 
+    {
+        if (orderedCells.Count == 0) 
+        {
+            Debug.Log("Done!");
+            return;
+        }
+        if (orderedCells.Count < 100)
+        {
+            foreach (Cell c in orderedCells)
+            {
+                c.UpdateEntropy();
+            }
+        }
+        //orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
+        orderedCells[0].Collapse();
     }
 }
