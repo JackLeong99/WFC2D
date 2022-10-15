@@ -101,14 +101,11 @@ public class GridBuilder : MonoBehaviour
             Debug.Log("Done!");
             return;
         }
-        if (orderedCells.Count < 100)
+        foreach (Cell c in orderedCells)
         {
-            foreach (Cell c in orderedCells)
-            {
-                c.UpdateEntropy();
-            }
+            c.UpdateEntropy();
         }
-        //orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
+        orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
         orderedCells[0].Collapse();
     }
 }
