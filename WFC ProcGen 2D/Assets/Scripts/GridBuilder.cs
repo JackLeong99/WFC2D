@@ -37,7 +37,6 @@ public class GridBuilder : MonoBehaviour
 
         cells = new Cell[width, height];
 
-        //var scale = tile.transform.localScale;
         var scale = spriteSize;
         var origin = transform.position;
         var bottomLeft = new Vector2

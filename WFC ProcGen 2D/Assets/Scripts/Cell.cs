@@ -101,7 +101,8 @@ public class Cell : MonoBehaviour
         {
             c.UpdateEntropy();
         }
-        unsolvedNeighbours.Sort((a, b) => a.entropy.CompareTo(b.entropy));
-        unsolvedNeighbours[Random.Range(0, unsolvedNeighbours.Count)].Collapse();
+        //unsolvedNeighbours.Sort((a, b) => a.entropy.CompareTo(b.entropy));
+        //unsolvedNeighbours[Random.Range(0, unsolvedNeighbours.Count)].Collapse();
+        unsolvedNeighbours[0].Collapse();
     }
 }
