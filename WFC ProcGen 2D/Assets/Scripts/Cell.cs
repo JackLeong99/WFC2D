@@ -71,15 +71,24 @@ public class Cell : MonoBehaviour
         }
         if (availableModules.Count == 0)
         {
-            Debug.LogError("Uh Oh spagettios. Failed to solve. Resetting!");
+            Debug.Log("Uh Oh spagettios. Failed to solve. Resetting!");
             grid.autoCollapse = true;
             grid.GenerateGrid();
         }
         entropy = availableModules.Count;
     }
 
-    public void Collapse() 
+    public void Collapse()
     {
+        StartCoroutine(DelayedCollapse());
+        //SetModule();
+        //collapsed = true;
+        //Propogate();
+    }
+
+    public IEnumerator DelayedCollapse() 
+    {
+        yield return new WaitForSeconds(grid.delay);
         SetModule();
         collapsed = true;
         Propogate();
@@ -87,6 +96,7 @@ public class Cell : MonoBehaviour
 
     public void Propogate() 
     {
+        Debug.Log("propogating from: "+ this.name);
         for (int i = 0; i < neighbours.Length; i++)
         {
             if (neighbours[i] == null || neighbours[i].collapsed) continue;
@@ -101,8 +111,8 @@ public class Cell : MonoBehaviour
         {
             c.UpdateEntropy();
         }
-        //unsolvedNeighbours.Sort((a, b) => a.entropy.CompareTo(b.entropy));
-        //unsolvedNeighbours[Random.Range(0, unsolvedNeighbours.Count)].Collapse();
+        unsolvedNeighbours.Sort((a, b) => a.entropy.CompareTo(b.entropy));
         unsolvedNeighbours[0].Collapse();
+        //unsolvedNeighbours[0].Collapse();
     }
 }

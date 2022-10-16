@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridBuilder : MonoBehaviour
 {
     public bool autoCollapse;
+    public float delay;
     public int width;
     public int height;
     public GameObject tile;
@@ -72,7 +73,8 @@ public class GridBuilder : MonoBehaviour
                 }
             }
         FlattenCells();
-        if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
+        //if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
+        if (autoCollapse) orderedCells[0].Collapse();
     }
 
     public void FlattenCells()
