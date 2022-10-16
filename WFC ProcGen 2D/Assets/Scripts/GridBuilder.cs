@@ -14,7 +14,13 @@ public class GridBuilder : MonoBehaviour
     public Cell[,] cells;
     public List<Cell> orderedCells;
     private Vector2 spriteSize;
-    
+    private Camera camera;
+
+    private void Awake()
+    {
+        SetCamera();
+    }
+
     void Start()
     {
         //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
@@ -30,6 +36,13 @@ public class GridBuilder : MonoBehaviour
             autoCollapse = true;
             GenerateGrid();
         }
+    }
+
+    public void SetCamera() 
+    {
+        camera = Camera.main;
+        if (width > height) camera.orthographicSize = height * 0.16f;
+        else camera.orthographicSize = width * 0.16f;
     }
 
     public void GenerateGrid() 

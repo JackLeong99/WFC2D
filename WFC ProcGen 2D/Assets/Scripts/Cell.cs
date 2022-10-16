@@ -69,7 +69,12 @@ public class Cell : MonoBehaviour
                 }
             }
         }
-        if (availableModules.Count == 0)
+        entropy = availableModules.Count;
+    }
+
+    public void Collapse()
+    {
+        if (entropy == 0)
         {
             Debug.LogWarning("Uh Oh spagettios. Failed to solve. Resetting!");
             if (grid.autoRestart)
@@ -77,12 +82,8 @@ public class Cell : MonoBehaviour
                 grid.autoCollapse = true;
                 grid.GenerateGrid();
             }
+            return;
         }
-        entropy = availableModules.Count;
-    }
-
-    public void Collapse()
-    {
         StartCoroutine(DelayedCollapse());
     }
 

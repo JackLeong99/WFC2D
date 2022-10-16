@@ -155,8 +155,8 @@ MonoBehaviour:
   autoCollapse: 0
   autoRestart: 1
   delay: 1
-  width: 10
-  height: 10
+  width: 40
+  height: 20
   tile: {fileID: 48608895130262063, guid: 37da4d7f632dea14899d448cc557cc97, type: 3}
   modules:
   - {fileID: 11400000, guid: af5e462ba4b20f747b214a0a37eb3d34, type: 2}
@@ -237,7 +237,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
