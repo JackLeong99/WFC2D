@@ -155,8 +155,8 @@ MonoBehaviour:
   autoCollapse: 0
   autoRestart: 1
   delay: 1
-  width: 40
-  height: 20
+  width: 50
+  height: 25
   tile: {fileID: 48608895130262063, guid: 37da4d7f632dea14899d448cc557cc97, type: 3}
   modules:
   - {fileID: 11400000, guid: af5e462ba4b20f747b214a0a37eb3d34, type: 2}
@@ -231,7 +231,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
+    width: 0.995
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
