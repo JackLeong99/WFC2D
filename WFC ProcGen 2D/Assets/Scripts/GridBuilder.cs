@@ -27,6 +27,7 @@ public class GridBuilder : MonoBehaviour
     {
         if (Input.GetKeyDown("r")) 
         {
+            autoCollapse = true;
             GenerateGrid();
         }
     }
@@ -98,6 +99,7 @@ public class GridBuilder : MonoBehaviour
         if (orderedCells.Count == 0)
         {
             Debug.Log("Done!");
+            autoCollapse = false;
             return;
         }
         orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));

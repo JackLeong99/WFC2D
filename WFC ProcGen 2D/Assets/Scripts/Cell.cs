@@ -88,7 +88,7 @@ public class Cell : MonoBehaviour
 
     public IEnumerator DelayedCollapse() 
     {
-        yield return new WaitForSeconds(grid.delay);
+        yield return new WaitForSeconds(grid.delay/100);
         SetModule();
         collapsed = true;
         Propogate();

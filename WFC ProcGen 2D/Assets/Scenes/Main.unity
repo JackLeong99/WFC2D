@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoCollapse: 0
   autoRestart: 1
-  delay: 0.1
+  delay: 1
   width: 10
   height: 10
   tile: {fileID: 48608895130262063, guid: 37da4d7f632dea14899d448cc557cc97, type: 3}
