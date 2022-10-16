@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridBuilder : MonoBehaviour
 {
     public bool autoCollapse;
+    public bool autoRestart;
     public float delay;
     public int width;
     public int height;
@@ -18,9 +19,7 @@ public class GridBuilder : MonoBehaviour
     {
         //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
         spriteSize = new Vector2(modules[0].tileSprite.rect.size.x / 100f, modules[0].tileSprite.rect.size.y / 100f);
-        //Debug.Log("x: " + spriteSize.x + ", y: " + spriteSize.y);
 
-        //Genereate the grid lmao
         GenerateGrid();
     }
 
@@ -73,8 +72,7 @@ public class GridBuilder : MonoBehaviour
                 }
             }
         FlattenCells();
-        //if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
-        if (autoCollapse) orderedCells[0].Collapse();
+        if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
     }
 
     public void FlattenCells()
@@ -95,18 +93,24 @@ public class GridBuilder : MonoBehaviour
         }
     }
 
-    public void CheckDone() 
+    public void next() 
     {
-        if (orderedCells.Count == 0) 
+        if (orderedCells.Count == 0)
         {
             Debug.Log("Done!");
             return;
         }
-        foreach (Cell c in orderedCells)
-        {
-            c.UpdateEntropy();
-        }
         orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
-        orderedCells[0].Collapse();
+        orderedCells[Random.Range(0, getLow(orderedCells))].Collapse();
+    }
+
+    public int getLow(List<Cell> cl) 
+    {
+        int l = 1;
+        foreach (Cell c in cl) 
+        {
+            if (c.entropy > l) return cl.IndexOf(c) - 1;
+        }
+        return 0;
     }
 }
