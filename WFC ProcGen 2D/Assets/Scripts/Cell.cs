@@ -48,8 +48,8 @@ public class Cell : MonoBehaviour
         {
             possibleModules.Add(grid.modules[i]);
             availableModules.Add(grid.modules[i]);
-            entropy = grid.modules.Count;
         }
+        entropy = grid.modules.Count;
     }
 
     public void SetModule() 

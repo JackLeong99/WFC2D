@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
+  m_Name: LedgeHorizontal_D
+  m_EditorClassIdentifier: 
+  tileSprite: {fileID: 21300000, guid: b4c143a875700bf48a1b41ffa0873108, type: 3}
+  edges:
+  - code: g
+  - code: lha
+  - code: g
+  - code: lha

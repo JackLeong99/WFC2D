@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
-  m_Name: LedgeCorner_NE
+  m_Name: LedgeVerticle_W_B
   m_EditorClassIdentifier: 
-  tileSprite: {fileID: 21300000, guid: 91a1e010443e4fb40b9206a6815778d3, type: 3}
+  tileSprite: {fileID: 21300000, guid: 81cbff61e0f71b94a92a4ff0204c1a87, type: 3}
   edges:
+  - code: g
+  - code: g
   - code: lva
   - code: g
-  - code: g
-  - code: lha

@@ -15,7 +15,6 @@ public class GridBuilder : MonoBehaviour
     public GameObject tile;
     public List<Module> modules;
     public Cell[,] cells;
-    [HideInInspector]
     public List<Cell> orderedCells;
     private Vector2 spriteSize;
     private Camera _camera;
@@ -47,8 +46,7 @@ public class GridBuilder : MonoBehaviour
     public void SetCamera() 
     {
         _camera = Camera.main;
-        if (width > height) _camera.orthographicSize = height * (spriteSize.y/2);
-        else _camera.orthographicSize = width * (spriteSize.x/2);
+        _camera.orthographicSize = (height * (spriteSize.x/2)) + 0.2f;
     }
 
     public void GenerateGrid() 
