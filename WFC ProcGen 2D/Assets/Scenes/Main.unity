@@ -152,22 +152,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3cd8ab6d39bfd45b6268a78b187440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usingComplexEdges: 0
   autoCollapse: 0
-  autoRestart: 1
-  delay: 1
+  autoRestart: 0
+  useDelayedCollapse: 1
+  delay: 2
   width: 40
   height: 20
-  tile: {fileID: 48608895130262063, guid: 37da4d7f632dea14899d448cc557cc97, type: 3}
+  tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   modules:
-  - {fileID: 11400000, guid: af5e462ba4b20f747b214a0a37eb3d34, type: 2}
-  - {fileID: 11400000, guid: 71eb4efb5a955a34b9c16e65cde0b08b, type: 2}
-  - {fileID: 11400000, guid: 9244ba59157337c4db9d64b480754a3d, type: 2}
-  - {fileID: 11400000, guid: 3b40540e4b485794b9cab50fc7aca3ca, type: 2}
-  - {fileID: 11400000, guid: 689ebabe103306a459a3a611c4ab851a, type: 2}
-  - {fileID: 11400000, guid: 6ab8ad216edce2b40b4a0bc7049e69fd, type: 2}
-  - {fileID: 11400000, guid: cfdce4b30d1588d4283b7d36af360518, type: 2}
-  - {fileID: 11400000, guid: 9df76d1dc691218408fd9f684fa037c2, type: 2}
-  - {fileID: 11400000, guid: 32fc129dd9c3b7b4a9171c44e0f7319b, type: 2}
+  - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
+  - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
+  - {fileID: 11400000, guid: c29ec35e3d0c0e34489b91f9fa4a1c2f, type: 2}
+  - {fileID: 11400000, guid: eac4abfedfc7e6b499686d8cda59f218, type: 2}
+  - {fileID: 11400000, guid: 88b5fbe855f51204788e43e9a1da6e81, type: 2}
+  - {fileID: 11400000, guid: d3edbbd3b2293bd41a18aa5dc165bde0, type: 2}
   orderedCells: []
 --- !u!4 &203494857
 Transform:

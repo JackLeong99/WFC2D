@@ -22,10 +22,13 @@ public class Cell : MonoBehaviour
 
     public GridBuilder grid;
 
+    private SpriteRenderer sRend;
+
     private void Awake()
     {
         possibleModules = new List<Module>();
         unsolvedNeighbours = new List<Cell>();
+        sRend = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -52,7 +55,7 @@ public class Cell : MonoBehaviour
     public void SetModule() 
     {
         activeModule = availableModules[Random.Range(0, availableModules.Count)];
-        GetComponent<SpriteRenderer>().sprite = activeModule.tileSprite;
+        sRend.sprite = activeModule.tileSprite;
         grid.orderedCells.Remove(this);
     }
 
@@ -63,7 +66,7 @@ public class Cell : MonoBehaviour
             if (neighbours[i] == null || !neighbours[i].collapsed) continue;
             for (int m = 0; m < possibleModules.Count; m++)
             {
-                if (!possibleModules[m].edges[i].Compatible(neighbours[i].activeModule.edges[(i + 2) % 4]))
+                if (!possibleModules[m].edges[i].Compatible(neighbours[i].activeModule.edges[(i + 2) % 4], grid.usingComplexEdges))
                 {
                     availableModules.Remove(possibleModules[m]);
                 }
@@ -84,7 +87,14 @@ public class Cell : MonoBehaviour
             }
             return;
         }
-        StartCoroutine(DelayedCollapse());
+        if (grid.useDelayedCollapse)
+        {
+            StartCoroutine(DelayedCollapse()); 
+            return;
+        }
+        SetModule();
+        collapsed = true;
+        Propogate();
     }
 
     public IEnumerator DelayedCollapse() 

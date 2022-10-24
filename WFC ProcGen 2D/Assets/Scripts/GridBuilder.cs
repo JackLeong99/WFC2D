@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class GridBuilder : MonoBehaviour
 {
+    public static GridBuilder instance;
+    public bool usingComplexEdges;
     public bool autoCollapse;
     public bool autoRestart;
+    public bool useDelayedCollapse;
     public float delay;
     public int width;
     public int height;
     public GameObject tile;
     public List<Module> modules;
     public Cell[,] cells;
+    [HideInInspector]
     public List<Cell> orderedCells;
     private Vector2 spriteSize;
-    private Camera camera;
+    private Camera _camera;
 
     private void Awake()
     {
-        SetCamera();
+        if(!instance)
+            instance = this;
     }
 
     void Start()
     {
         //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
         spriteSize = new Vector2(modules[0].tileSprite.rect.size.x / 100f, modules[0].tileSprite.rect.size.y / 100f);
-
+        Debug.Log("x: " + modules[0].tileSprite.rect.size.x / 100f + ". y: " + modules[0].tileSprite.rect.size.y / 100f);
+        SetCamera();
         GenerateGrid();
     }
 
@@ -40,9 +46,9 @@ public class GridBuilder : MonoBehaviour
 
     public void SetCamera() 
     {
-        camera = Camera.main;
-        if (width > height) camera.orthographicSize = height * 0.16f;
-        else camera.orthographicSize = width * 0.16f;
+        _camera = Camera.main;
+        if (width > height) _camera.orthographicSize = height * (spriteSize.y/2);
+        else _camera.orthographicSize = width * (spriteSize.x/2);
     }
 
     public void GenerateGrid() 
