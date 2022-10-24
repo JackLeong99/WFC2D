@@ -119,6 +119,9 @@ public class GridBuilder : MonoBehaviour
             autoCollapse = false;
             return;
         }
+        //This sorting method is pretty inefficient and causes stackoverflow errors when solving larger grids.
+        //For example attempting to solve a 100x100 grid without the use of "delayed collapse" aka coroutines always leads to a stack overflow error.
+        //its possible that this sorting method should only be used for first sort then once everything is relatively in order a different method should be used???
         orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
         orderedCells[Random.Range(0, getLow(orderedCells))].Collapse();
     }

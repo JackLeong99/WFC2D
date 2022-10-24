@@ -155,9 +155,9 @@ MonoBehaviour:
   usingComplexEdges: 0
   autoCollapse: 0
   autoRestart: 0
-  useDelayedCollapse: 1
+  useDelayedCollapse: 0
   delay: 0
-  width: 40
+  width: 20
   height: 20
   tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   modules:

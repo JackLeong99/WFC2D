@@ -79,7 +79,7 @@ public class Cell : MonoBehaviour
     {
         if (entropy == 0)
         {
-            Debug.LogWarning("Uh Oh spagettios. Failed to solve. Resetting!");
+            Debug.LogWarning("Uh Oh spagettios. Failed to solve: " + this.name + ". Resetting!");
             if (grid.autoRestart)
             {
                 grid.autoCollapse = true;
