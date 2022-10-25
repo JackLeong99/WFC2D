@@ -113,10 +113,12 @@ https://github.com/atalantus/WFC-Unity-Example
 ## week 10 - Prototyping
 
 ## week 11 - Evaluation
+
+## week 12 - Evaluation
 https://stackoverflow.com/questions/64584290/getting-stack-overflow-exception-while-sorting-an-array-with-15000-elements
 https://stackoverflow.com/questions/20415044/stackoverflowexception-when-perform-quicksort-with-ordered-list
 https://stackoverflow.com/questions/33452614/quicksort-algorithm-cormen-gives-stackoverflow
 
-## week 12 - Evaluation
+Backtracking is really nessecary for more complex tilesets to operate at larger grid sizes
 
 ## week 13 - Finalising the project & report
