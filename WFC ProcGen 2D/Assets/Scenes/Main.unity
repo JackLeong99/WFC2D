@@ -152,15 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b3cd8ab6d39bfd45b6268a78b187440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usingComplexEdges: 1
-  useWeighting: 0
+  autoRestart: 0
   autoCollapse: 0
-  autoRestart: 1
-  useDelayedCollapse: 0
+  useWeighting: 1
+  useSmartSpacing: 0
+  useDelayedCollapse: 1
   delay: 0
-  width: 40
+  usingComplexEdges: 1
+  width: 20
   height: 20
-  tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   modules:
   - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
   - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
@@ -203,7 +203,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7ee328a8c751af4b8ebd1b08a932f4f, type: 2}
   - {fileID: 11400000, guid: a51e314cc4c1c544cbce8c5c36596737, type: 2}
   - {fileID: 11400000, guid: 2fb2bd8008e320a48bf66494ff93db0d, type: 2}
+  - {fileID: 11400000, guid: 1a6bf4f8a7fbc5447a9b58f63277abf0, type: 2}
+  - {fileID: 11400000, guid: 6331cfc8f78d5d04abfb0eed4e8db207, type: 2}
+  - {fileID: 11400000, guid: 6e1697014c8c7fc479aad71817c9e9cc, type: 2}
+  - {fileID: 11400000, guid: 26d8359e95c58c540aaa44ff51019871, type: 2}
+  - {fileID: 11400000, guid: a609cde8a770a3044a92092181f70416, type: 2}
+  - {fileID: 11400000, guid: 7d1b17d7e74f51042b8bec62960f00cd, type: 2}
+  - {fileID: 11400000, guid: 0e9c35ee0eb613f4cbaaf6d5f4d722f4, type: 2}
+  - {fileID: 11400000, guid: 2cccb1a23c3db5044aa63a3426864d62, type: 2}
+  tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   orderedCells: []
+  resetCertainty:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &203494857
 Transform:
   m_ObjectHideFlags: 0

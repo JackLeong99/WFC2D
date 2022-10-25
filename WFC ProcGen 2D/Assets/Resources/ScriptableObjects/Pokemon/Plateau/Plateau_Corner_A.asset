@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Plateau_Corner_A
   m_EditorClassIdentifier: 
   tag: 
-  weighting: 0
-  tileSprite: {fileID: 0}
+  weighting: 1
+  tileSprite: {fileID: 21300000, guid: 94a1302ef24e3a74ebf1b74380ac6bdc, type: 3}
   edges:
-  - code: 
-  - code: 
-  - code: 
-  - code: 
+  - code: pgg
+  - code: ggp
+  - code: ggg
+  - code: ggg

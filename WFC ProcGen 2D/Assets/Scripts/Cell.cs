@@ -110,6 +110,7 @@ public class Cell : MonoBehaviour
 
     public void UpdateEntropy()
     {
+        entropyUpToDate = true;
         int incompatabilityCount = 0;
         for (int i = 0; i < neighbours.Length; i++)
         {
@@ -128,11 +129,13 @@ public class Cell : MonoBehaviour
                     availableModules.Remove(possibleModules[m]);
             }
         }
-        this.entropyUpToDate = true;
         if (!availableModules.SequenceEqual(possibleModules))
-            foreach (Cell c in neighbours)
-                if (!entropyUpToDate)
-                    UpdateEntropy();
+            for (int c = 0; c < neighbours.Length; c++) 
+            {
+                if (!neighbours[c]) continue;
+                if (!neighbours[c].entropyUpToDate && !neighbours[c].collapsed)
+                    neighbours[c].UpdateEntropy();
+            }
         entropy = availableModules.Count;
     }
 
