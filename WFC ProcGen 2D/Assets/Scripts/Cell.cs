@@ -139,7 +139,7 @@ public class Cell : MonoBehaviour
     //        }
     //}
 
-    #endregion
+    #endregion 
 
     public void UpdateEntropy(int gen)
     {
@@ -166,6 +166,7 @@ public class Cell : MonoBehaviour
         {
             for (int l = 0; l < neighbours.Length; l++)
             {
+                if (!neighbours[l]) return;
                 if (!neighbours[l].collapsed)
                     neighbours[l].UpdateEntropy(gen - 1);
             }
@@ -176,12 +177,14 @@ public class Cell : MonoBehaviour
     {
         if (entropy == 0)
         {
-            Debug.LogWarning("Uh Oh spagettios. Failed to solve: " + this.name + ". Resetting!");
             if (grid.autoRestart)
             {
+                Debug.LogWarning("Uh Oh spagettios. Failed to solve: " + this.name + ". Restarting!", this.gameObject);
                 grid.autoCollapse = true;
                 grid.GenerateGrid();
+                return;
             }
+            Debug.LogWarning("Uh Oh spagettios. Failed to solve: " + this.name, this.gameObject);
             return;
         }
         if (grid.useDelayedCollapse)

@@ -10,7 +10,8 @@ public class GridBuilder : MonoBehaviour
     [HideInInspector]
     public bool autoCollapse;
     public bool useWeighting;
-    [Tooltip("Warning! setting this higher causes exponentially more lag")]
+    [Tooltip("Upping this to 2 greatly reduces performance")]
+    [Range(0, 2)]
     public int propagationDistance;
     public bool useDelayedCollapse;
     public float delay;

@@ -142,7 +142,7 @@ Things to adress for achieving prototype 3:
     activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
 
     this redimentary weighting seems to produce something approaching the desired behaviour but is flawed in a few ways:
-        - 
+        - TODO
 
     One idea I have to further encourage the correct behavious is something im calling "Likeness".
     Each tile can have a category assigned to it and if a neighbouring tile falls into the same category then it gains an increased weighting.
@@ -152,5 +152,8 @@ Things to adress for achieving prototype 3:
 
     Another idea: fruthering propogation. At the moment, when a cell collapses, it only propogates information to the nearest cell. 
     By furthinging this such that all cells that should be updated are, before the next collapse, we can reduce the chance of failure greatly.
+    Update! This worked... to an extent. It does mitigate failure to a noticable degree however it does so at a significant performance cost.
+
+    Another major optimization thats easy to implement is combining tiles with the same edges by turning a tiles sprite into a list of sprites and randomly picking from that.
 
 ## week 13 - Finalising the project & report

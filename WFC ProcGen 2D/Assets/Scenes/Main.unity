@@ -155,12 +155,12 @@ MonoBehaviour:
   autoRestart: 0
   autoCollapse: 0
   useWeighting: 1
-  propagationDistance: 0
+  propagationDistance: 1
   useDelayedCollapse: 1
   delay: 0
   usingComplexEdges: 1
-  width: 40
-  height: 40
+  width: 25
+  height: 25
   modules:
   - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
   - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
