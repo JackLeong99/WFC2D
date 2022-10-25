@@ -141,4 +141,13 @@ Things to adress for achieving prototype 3:
 
     activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
 
+    this redimentary weighting seems to produce something approaching the desired behaviour but is flawed in a few ways:
+        - 
+
+    One idea I have to further encourage the correct behavious is something im calling "Likeness".
+    Each tile can have a category assigned to it and if a neighbouring tile falls into the same category then it gains an increased weighting.
+    This however will require a more sophisticaed weighting system compared to what I have as of writing this.
+
+    Another Idea is multi code edges allowing for more sophisticated adjacency.
+
 ## week 13 - Finalising the project & report

@@ -5,18 +5,25 @@ using UnityEngine;
 public class GridBuilder : MonoBehaviour
 {
     public static GridBuilder instance;
-    public bool usingComplexEdges;
-    public bool useWeighting;
+    [Header("Can be changed at runtime")]
+    public bool autoRestart;
     [HideInInspector]
     public bool autoCollapse;
-    public bool autoRestart;
+    public bool useWeighting;
+    public bool useSmartSpacing;
     public bool useDelayedCollapse;
     public float delay;
 
+    [Header("Set Before runtime")]
+    public bool usingComplexEdges;
     public int width;
     public int height;
-    public GameObject tile;
+    [Space(16)]
     public List<Module> modules;
+
+    [Header("Default tile object based on tileset resolution")]
+    public GameObject tile;
+
     public Cell[,] cells;
     [HideInInspector]
     public List<Cell> orderedCells;

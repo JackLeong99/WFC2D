@@ -61,32 +61,24 @@ public class Cell : MonoBehaviour
 
     public Module RandomWithWeight(List<Module> options) 
     {
-        float min = 1.0f;
-        List<Module> weighted = new List<Module>();
-        foreach (Module m in options) if (m.weighting < min) min = m.weighting;
-        float rnd = Random.Range(min, 1.0f);
-        foreach (Module m in options) if (m.weighting >= rnd) weighted.Add(m);
+        //generic weighting method from stackexchange
+        float sum = 0;
+        foreach (Module m in options) sum += m.weighting;
+        float rnd = Random.Range(0.0f, sum);
 
-        //Old generic weighting method from stackexchange
-        //float sum = 0;
-        //foreach (Module m in options) sum += m.weighting;
-        //float rnd = Random.Range(0.0f, sum);
-        //foreach (Module m in options) 
-        //{
-        //    if (rnd < m.weighting) return m;
-        //    rnd -= m.weighting;
-        //}
+        foreach (Module m in options)
+        {
+            if (rnd < m.weighting) return m;
+            rnd -= m.weighting;
+        }
         //Safety net error handling, should never be reachable.
-        //Debug.LogWarning("Uh Oh spagettios. Failed to pick at: " + this.name);
-        //if (grid.autoRestart && sum != 0)
-        //{
-        //    grid.autoCollapse = true;
-        //    grid.GenerateGrid();
-        //}
-        //return null;
-        int pick = Random.Range(0, weighted.Count);
-        Debug.Log(this.name +" picks: " + pick);
-        return weighted[pick];
+        Debug.LogWarning("Uh Oh spagettios. Failed to pick at: " + this.name);
+        if (grid.autoRestart && sum != 0)
+        {
+            grid.autoCollapse = true;
+            grid.GenerateGrid();
+        }
+        return null;
     }
 
     public void UpdateEntropy()

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Sand_B
   m_EditorClassIdentifier: 
+  tag: 
+  weighting: 5
   tileSprite: {fileID: 21300000, guid: c2e14ce138c4bb348a08446442bda292, type: 3}
   edges:
   - code: sss

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Flowers_red_2
   m_EditorClassIdentifier: 
+  tag: 
+  weighting: 0.1
   tileSprite: {fileID: 21300000, guid: a9777b59541ac554ab67de4164c742aa, type: 3}
   edges:
   - code: ggg

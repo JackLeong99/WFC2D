@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: LedgeVerticle_R_B
   m_EditorClassIdentifier: 
+  tag: ledge
+  weighting: 0.1
   tileSprite: {fileID: 21300000, guid: 2bb870ccc71e6b34f84272fe17b2455a, type: 3}
   edges:
   - code: ggg

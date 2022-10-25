@@ -7,11 +7,19 @@ using UnityEngine;
 
 public class Module : ScriptableObject
 {
+    public string tag;
+    [Range(0.0f, 100.0f)]
+    public float weighting;
     public Sprite tileSprite;
     [Tooltip("First Code corresponds to bottom edge, going counter clockwise")]
     public Edge[] edges = new Edge[4];
-    [Range(0.0f, 1.0f)]
-    public float weighting;
+
+    public bool CompareTag(Module m) 
+    {
+        if (this.tag == "" || m.tag == "") return false;
+        if (this.tag == m.tag) return true;
+        return false;
+    }
 }
 
 [Serializable]
