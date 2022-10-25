@@ -27,6 +27,7 @@ public class Cell : MonoBehaviour
     private void Awake()
     {
         possibleModules = new List<Module>();
+        availableModules = new List<Module>();
         unsolvedNeighbours = new List<Cell>();
         sRend = GetComponent<SpriteRenderer>();
     }
@@ -37,6 +38,7 @@ public class Cell : MonoBehaviour
         {
             if (GetComponent<BoxCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition))) 
             {
+                //UpdateEntropy();
                 Collapse();
             }
         }
@@ -55,6 +57,8 @@ public class Cell : MonoBehaviour
     public void SetModule() 
     {
         activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
+        availableModules = new List<Module>();
+        availableModules.Add(activeModule);
         sRend.sprite = activeModule.tileSprite;
         grid.orderedCells.Remove(this);
     }
@@ -81,19 +85,45 @@ public class Cell : MonoBehaviour
         return null;
     }
 
+    //public void UpdateEntropy()
+    //{
+    //    for (int i = 0; i < neighbours.Length; i++)
+    //    {
+    //        if (neighbours[i] == null || !neighbours[i].collapsed) continue;
+    //        for (int m = 0; m < possibleModules.Count; m++)
+    //        {
+    //            if (!possibleModules[m].edges[i].Compatible(neighbours[i].activeModule.edges[(i + 2) % 4], grid.usingComplexEdges))
+    //            {
+    //                availableModules.Remove(possibleModules[m]);
+    //            }
+    //        }
+    //    }
+    //    entropy = availableModules.Count;
+    //}
+
     public void UpdateEntropy()
     {
+        int incompatabilityCount = 0;
         for (int i = 0; i < neighbours.Length; i++)
         {
-            if (neighbours[i] == null || !neighbours[i].collapsed) continue;
+            if (neighbours[i] == null) continue;
             for (int m = 0; m < possibleModules.Count; m++)
             {
-                if (!possibleModules[m].edges[i].Compatible(neighbours[i].activeModule.edges[(i + 2) % 4], grid.usingComplexEdges))
+                incompatabilityCount = 0;
+                for (int n = 0; n < neighbours[i].availableModules.Count; n++)
                 {
-                    availableModules.Remove(possibleModules[m]);
+                    if (!possibleModules[m].edges[i].Compatible(neighbours[i].availableModules[n].edges[(i + 2) % 4], grid.usingComplexEdges))
+                    {
+                        incompatabilityCount++;
+                    }
                 }
+                if (incompatabilityCount == neighbours[i].availableModules.Count)
+                    availableModules.Remove(possibleModules[m]);
             }
         }
+        if (!availableModules.SequenceEqual(possibleModules))
+            foreach (Cell c in neighbours)
+                UpdateEntropy();
         entropy = availableModules.Count;
     }
 

@@ -150,4 +150,7 @@ Things to adress for achieving prototype 3:
 
     Another Idea is multi code edges allowing for more sophisticated adjacency.
 
+    Another idea: fruthering propogation. At the moment, when a cell collapses, it only propogates information to the nearest cell. 
+    By furthinging this such that all cells that should be updated are, before the next collapse, we can reduce the chance of failure greatly.
+
 ## week 13 - Finalising the project & report
