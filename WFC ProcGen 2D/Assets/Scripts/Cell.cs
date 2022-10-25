@@ -8,6 +8,8 @@ public class Cell : MonoBehaviour
 {
     public bool collapsed;
 
+    public bool entropyUpToDate;
+
     public int entropy;
 
     public List<Module> possibleModules;
@@ -30,6 +32,11 @@ public class Cell : MonoBehaviour
         availableModules = new List<Module>();
         unsolvedNeighbours = new List<Cell>();
         sRend = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        grid.resetCertainty.AddListener(Uncertain);
     }
 
     private void Update()
@@ -121,10 +128,17 @@ public class Cell : MonoBehaviour
                     availableModules.Remove(possibleModules[m]);
             }
         }
+        this.entropyUpToDate = true;
         if (!availableModules.SequenceEqual(possibleModules))
             foreach (Cell c in neighbours)
-                UpdateEntropy();
+                if (!entropyUpToDate)
+                    UpdateEntropy();
         entropy = availableModules.Count;
+    }
+
+    public void Uncertain() 
+    {
+        entropyUpToDate = false;
     }
 
     public void Collapse()
@@ -146,7 +160,7 @@ public class Cell : MonoBehaviour
         }
         SetModule();
         collapsed = true;
-        Propogate();
+        Propagate();
     }
 
     public IEnumerator DelayedCollapse() 
@@ -154,10 +168,10 @@ public class Cell : MonoBehaviour
         yield return new WaitForSeconds(grid.delay/100);
         SetModule();
         collapsed = true;
-        Propogate();
+        Propagate();
     }
 
-    public void Propogate() 
+    public void Propagate() 
     {
         for (int i = 0; i < neighbours.Length; i++)
         {

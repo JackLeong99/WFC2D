@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GridBuilder : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class GridBuilder : MonoBehaviour
     public Cell[,] cells;
     [HideInInspector]
     public List<Cell> orderedCells;
+    public UnityEvent resetCertainty;
     private Vector2 spriteSize;
     private Camera _camera;
 
@@ -135,6 +137,7 @@ public class GridBuilder : MonoBehaviour
         //For example attempting to solve a 100x100 grid without the use of "delayed collapse" aka coroutines always leads to a stack overflow error.
         //its possible that this sorting method should only be used for first sort then once everything is relatively in order a different method should be used???
         orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
+        resetCertainty.Invoke();
         orderedCells[Random.Range(0, getLow(orderedCells))].Collapse();
     }
 
