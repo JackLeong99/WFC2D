@@ -6,10 +6,13 @@ public class GridBuilder : MonoBehaviour
 {
     public static GridBuilder instance;
     public bool usingComplexEdges;
+    public bool useWeighting;
+    [HideInInspector]
     public bool autoCollapse;
     public bool autoRestart;
     public bool useDelayedCollapse;
     public float delay;
+
     public int width;
     public int height;
     public GameObject tile;
@@ -28,6 +31,7 @@ public class GridBuilder : MonoBehaviour
 
     void Start()
     {
+        if (useWeighting) modules.Sort((a, b) => b.weighting.CompareTo(a.weighting));
         //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
         spriteSize = new Vector2(modules[0].tileSprite.rect.size.x / 100f, modules[0].tileSprite.rect.size.y / 100f);
         Debug.Log("x: " + modules[0].tileSprite.rect.size.x / 100f + ". y: " + modules[0].tileSprite.rect.size.y / 100f);

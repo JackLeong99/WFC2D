@@ -10,6 +10,8 @@ public class Module : ScriptableObject
     public Sprite tileSprite;
     [Tooltip("First Code corresponds to bottom edge, going counter clockwise")]
     public Edge[] edges = new Edge[4];
+    [Range(0.0f, 1.0f)]
+    public float weighting;
 }
 
 [Serializable]

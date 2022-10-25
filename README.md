@@ -137,4 +137,8 @@ Things to adress for achieving prototype 3:
     By adding weighting to this choice, I should be able to encourage certain types of tiles and thus certain shapes.
     For context I am thinking about this in the context of the pokemon tileset. By weighting grass higher than ledges, I would be able to discourage lots of random and illogical looking edges.
 
+    Update: I am testing a rudimenatry weighting system and this is my favourite line of code I've written so far:
+
+    activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
+
 ## week 13 - Finalising the project & report

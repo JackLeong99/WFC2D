@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usingComplexEdges: 1
+  useWeighting: 0
   autoCollapse: 0
   autoRestart: 1
   useDelayedCollapse: 0
