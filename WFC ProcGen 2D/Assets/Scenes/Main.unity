@@ -155,12 +155,12 @@ MonoBehaviour:
   autoRestart: 0
   autoCollapse: 0
   useWeighting: 1
-  useSmartSpacing: 0
+  propagationDistance: 0
   useDelayedCollapse: 1
   delay: 0
   usingComplexEdges: 1
-  width: 50
-  height: 50
+  width: 40
+  height: 40
   modules:
   - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
   - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
@@ -213,9 +213,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2cccb1a23c3db5044aa63a3426864d62, type: 2}
   tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   orderedCells: []
-  resetCertainty:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &203494857
 Transform:
   m_ObjectHideFlags: 0

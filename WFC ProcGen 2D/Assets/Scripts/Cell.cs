@@ -12,8 +12,6 @@ public class Cell : MonoBehaviour
 
     public int entropy;
 
-    public int entropyLastUpdate;
-
     public List<Module> possibleModules;
     [HideInInspector]
     public List<Module> availableModules;
@@ -36,11 +34,6 @@ public class Cell : MonoBehaviour
         sRend = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
-    {
-        grid.resetCertainty.AddListener(Uncertain);
-    }
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !collapsed) 
@@ -61,7 +54,6 @@ public class Cell : MonoBehaviour
             availableModules.Add(grid.modules[i]);
         }
         entropy = grid.modules.Count;
-        entropyLastUpdate = entropy;
     }
 
     public void SetModule() 
@@ -95,6 +87,10 @@ public class Cell : MonoBehaviour
         return null;
     }
 
+    #region My first approach to furthering propogation
+
+    //this automatically propagates as far as neccesary but as a result is MUCH slower
+
     //public void UpdateEntropy()
     //{
     //    for (int i = 0; i < neighbours.Length; i++)
@@ -111,10 +107,42 @@ public class Cell : MonoBehaviour
     //    entropy = availableModules.Count;
     //}
 
-    public void UpdateEntropy()
+    //public void UpdateEntropy()
+    //{
+    //    entropyUpToDate = true;
+    //    entropyLastUpdate = availableModules.Count;
+    //    int incompatabilityCount = 0;
+    //    for (int i = 0; i < neighbours.Length; i++)
+    //    {
+    //        if (neighbours[i] == null) continue;
+    //        for (int m = 0; m < possibleModules.Count; m++)
+    //        {
+    //            incompatabilityCount = 0;
+    //            for (int n = 0; n < neighbours[i].availableModules.Count; n++)
+    //            {
+    //                if (!possibleModules[m].edges[i].Compatible(neighbours[i].availableModules[n].edges[(i + 2) % 4], grid.usingComplexEdges))
+    //                {
+    //                    incompatabilityCount++;
+    //                }
+    //            }
+    //            if (incompatabilityCount == neighbours[i].availableModules.Count)
+    //                availableModules.Remove(possibleModules[m]);
+    //        }
+    //    }
+    //    entropy = availableModules.Count;
+    //    if (entropy < entropyLastUpdate)
+    //        for (int c = 0; c < neighbours.Length; c++) 
+    //        {
+    //            if (!neighbours[c]) continue;
+    //            if (!neighbours[c].entropyUpToDate && !neighbours[c].collapsed)
+    //                neighbours[c].UpdateEntropy();
+    //        }
+    //}
+
+    #endregion
+
+    public void UpdateEntropy(int gen)
     {
-        entropyUpToDate = true;
-        entropyLastUpdate = availableModules.Count;
         int incompatabilityCount = 0;
         for (int i = 0; i < neighbours.Length; i++)
         {
@@ -134,18 +162,14 @@ public class Cell : MonoBehaviour
             }
         }
         entropy = availableModules.Count;
-        if (entropy < entropyLastUpdate)
-            for (int c = 0; c < neighbours.Length; c++) 
+        if (gen > 0)
+        {
+            for (int l = 0; l < neighbours.Length; l++)
             {
-                if (!neighbours[c]) continue;
-                if (!neighbours[c].entropyUpToDate && !neighbours[c].collapsed)
-                    neighbours[c].UpdateEntropy();
+                if (!neighbours[l].collapsed)
+                    neighbours[l].UpdateEntropy(gen - 1);
             }
-    }
-
-    public void Uncertain() 
-    {
-        entropyUpToDate = false;
+        }
     }
 
     public void Collapse()
@@ -187,7 +211,7 @@ public class Cell : MonoBehaviour
         }
         foreach (Cell c in unsolvedNeighbours) 
         {
-            c.UpdateEntropy();
+            c.UpdateEntropy(grid.propagationDistance);
         }
         grid.next();
     }
