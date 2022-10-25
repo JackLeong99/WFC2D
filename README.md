@@ -115,10 +115,26 @@ https://github.com/atalantus/WFC-Unity-Example
 ## week 11 - Evaluation
 
 ## week 12 - Evaluation
-https://stackoverflow.com/questions/64584290/getting-stack-overflow-exception-while-sorting-an-array-with-15000-elements
-https://stackoverflow.com/questions/20415044/stackoverflowexception-when-perform-quicksort-with-ordered-list
-https://stackoverflow.com/questions/33452614/quicksort-algorithm-cormen-gives-stackoverflow
+Things to adress for overall project:
+    Stackoverflow errors when working with very large grids and no delay. From my understanding so far this is because I am using a generic sort function, see below:
+    https://stackoverflow.com/questions/64584290/getting-stack-overflow-exception-while-sorting-an-array-with-15000-elements
+    https://stackoverflow.com/questions/20415044/stackoverflowexception-when-perform-quicksort-with-ordered-list
+    https://stackoverflow.com/questions/33452614/quicksort-algorithm-cormen-gives-stackoverflow
 
-Backtracking is really nessecary for more complex tilesets to operate at larger grid sizes
+    Backtracking is really nessecary for more complex tilesets to operate at larger grid sizes.
+    As the more either of these factors increase, (tileset complexity/grid size) the more likely it is to run into an unsolvable state forcing a redo.
+    Adding backtracking is a common inclusion in these algorithms as it is generally the best/only realistic solution in adressing this problem.
+    This is because backtracking allows the program to avoid a completely new attempt each time one of these situations is encountered by simply trying another solution to the previous tile.
+    However this is easier said than implemented as you need to also check if the previous tile actually had more than one possible solution.
+    If not you need to go further back until one that had multiple options is reached and then continue from there.
+    This requires an ordered list of collapsed tiles so that in case of failure it can read through these to find an appropriate place to start from.
+    Implementing this in my algorithm is very doable however.
+
+Things to adress for achieving prototype 3:
+    Without having looked at any examples of constraints beyond presetting certain tiles, my first instinct in achieving more logical generation is to add some kind of weighting to the random choices.
+    To further explain, at the moment my algorithm is searching for the lowest entropy value and solving that.
+    When it tries to collapse a tile, it randomly choses between all of the remaining possible options that haven't yet been removed by adjacently solved tiles.
+    By adding weighting to this choice, I should be able to encourage certain types of tiles and thus certain shapes.
+    For context I am thinking about this in the context of the pokemon tileset. By weighting grass higher than ledges, I would be able to discourage lots of random and illogical looking edges.
 
 ## week 13 - Finalising the project & report
