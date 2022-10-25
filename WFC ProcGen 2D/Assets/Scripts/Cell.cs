@@ -12,8 +12,10 @@ public class Cell : MonoBehaviour
 
     public int entropy;
 
-    public List<Module> possibleModules;
+    public int entropyLastUpdate;
 
+    public List<Module> possibleModules;
+    [HideInInspector]
     public List<Module> availableModules;
 
     public Module activeModule;
@@ -59,6 +61,7 @@ public class Cell : MonoBehaviour
             availableModules.Add(grid.modules[i]);
         }
         entropy = grid.modules.Count;
+        entropyLastUpdate = entropy;
     }
 
     public void SetModule() 
@@ -111,6 +114,7 @@ public class Cell : MonoBehaviour
     public void UpdateEntropy()
     {
         entropyUpToDate = true;
+        entropyLastUpdate = availableModules.Count;
         int incompatabilityCount = 0;
         for (int i = 0; i < neighbours.Length; i++)
         {
@@ -129,14 +133,14 @@ public class Cell : MonoBehaviour
                     availableModules.Remove(possibleModules[m]);
             }
         }
-        if (!availableModules.SequenceEqual(possibleModules))
+        entropy = availableModules.Count;
+        if (entropy < entropyLastUpdate)
             for (int c = 0; c < neighbours.Length; c++) 
             {
                 if (!neighbours[c]) continue;
                 if (!neighbours[c].entropyUpToDate && !neighbours[c].collapsed)
                     neighbours[c].UpdateEntropy();
             }
-        entropy = availableModules.Count;
     }
 
     public void Uncertain() 

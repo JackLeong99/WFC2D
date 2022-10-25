@@ -159,8 +159,8 @@ MonoBehaviour:
   useDelayedCollapse: 1
   delay: 0
   usingComplexEdges: 1
-  width: 20
-  height: 20
+  width: 50
+  height: 50
   modules:
   - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
   - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
