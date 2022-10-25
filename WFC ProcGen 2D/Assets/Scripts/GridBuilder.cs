@@ -15,6 +15,7 @@ public class GridBuilder : MonoBehaviour
     public GameObject tile;
     public List<Module> modules;
     public Cell[,] cells;
+    [HideInInspector]
     public List<Cell> orderedCells;
     private Vector2 spriteSize;
     private Camera _camera;
