@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sand_Corner_H
   m_EditorClassIdentifier: 
   tag: 
-  weighting: 0.1
+  weighting: 0.2
   tileSprite: {fileID: 21300000, guid: 0b05d3fb5da61e944a37de3317920889, type: 3}
   edges:
   - code: sss

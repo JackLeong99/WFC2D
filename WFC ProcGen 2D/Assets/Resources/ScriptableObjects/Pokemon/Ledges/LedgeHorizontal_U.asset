@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LedgeHorizontal_U
   m_EditorClassIdentifier: 
   tag: ledge
-  weighting: 0.5
+  weighting: 1
   tileSprite: {fileID: 21300000, guid: 1bda1e1bce087d446899b70ff1c0fa86, type: 3}
   edges:
   - code: ggg

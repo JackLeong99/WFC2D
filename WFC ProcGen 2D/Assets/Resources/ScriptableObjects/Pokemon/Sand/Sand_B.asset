@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sand_B
   m_EditorClassIdentifier: 
   tag: 
-  weighting: 5
+  weighting: 3
   tileSprite: {fileID: 21300000, guid: c2e14ce138c4bb348a08446442bda292, type: 3}
   edges:
   - code: sss

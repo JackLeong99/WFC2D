@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Plateau_Corner_D
   m_EditorClassIdentifier: 
   tag: 
-  weighting: 1
+  weighting: 0.2
   tileSprite: {fileID: 21300000, guid: a68dd019684065e4c91a68e5d2d2a78d, type: 3}
   edges:
   - code: ggg

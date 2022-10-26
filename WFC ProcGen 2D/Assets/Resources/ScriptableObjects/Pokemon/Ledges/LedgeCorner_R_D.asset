@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LedgeCorner_R_D
   m_EditorClassIdentifier: 
   tag: ledge
-  weighting: 0.2
+  weighting: 0.05
   tileSprite: {fileID: 21300000, guid: a3acd26bd454b554ba39b39034e22c45, type: 3}
   edges:
   - code: gdg

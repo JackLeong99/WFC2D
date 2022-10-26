@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Plateau_Edge_C
   m_EditorClassIdentifier: 
   tag: 
-  weighting: 1
+  weighting: 3
   tileSprite: {fileID: 21300000, guid: 60c63eed118926a45a86f6d4c1e7c6b9, type: 3}
   edges:
   - code: ggp
