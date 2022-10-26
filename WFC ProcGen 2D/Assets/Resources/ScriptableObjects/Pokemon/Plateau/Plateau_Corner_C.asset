@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Plateau_Corner_C
   m_EditorClassIdentifier: 
-  tag: 
-  weighting: 0.2
+  weighting: 0.01
   tileSprite: {fileID: 21300000, guid: 6095baccde03e0e4aac1f46aa66a20d0, type: 3}
+  spritePool: []
+  spritePoolWeighting: []
   edges:
   - code: ggg
   - code: ppg
-  - code: ggp
+  - code: ggg
   - code: ggg

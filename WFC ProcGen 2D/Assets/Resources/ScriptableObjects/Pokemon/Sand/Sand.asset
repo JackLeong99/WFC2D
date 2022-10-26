@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
-  m_Name: Flowers_yellow_3
+  m_Name: Sand
   m_EditorClassIdentifier: 
-  tag: 
-  weighting: 0.1
-  tileSprite: {fileID: 21300000, guid: 95c620c4cfec8e64792a0374128b7d7d, type: 3}
+  weighting: 1
+  tileSprite: {fileID: 21300000, guid: b9ad92a9fd89f2b4c8618e2a329f00e4, type: 3}
+  spritePool:
+  - {fileID: 21300000, guid: b9ad92a9fd89f2b4c8618e2a329f00e4, type: 3}
+  - {fileID: 21300000, guid: c2e14ce138c4bb348a08446442bda292, type: 3}
+  spritePoolWeighting:
+  - 1.1
+  - 1
   edges:
-  - code: ggg
-  - code: ggg
-  - code: ggg
-  - code: ggg
+  - code: sss
+  - code: sss
+  - code: sss
+  - code: sss

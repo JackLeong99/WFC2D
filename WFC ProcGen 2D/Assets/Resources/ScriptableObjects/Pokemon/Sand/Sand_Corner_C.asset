@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Sand_Corner_C
   m_EditorClassIdentifier: 
-  tag: 
-  weighting: 0.1
+  weighting: 0.5
   tileSprite: {fileID: 21300000, guid: 4ac4ff339fccb8b4ca431cfecc545b73, type: 3}
+  spritePool: []
+  spritePoolWeighting: []
   edges:
   - code: ggg
   - code: ggs

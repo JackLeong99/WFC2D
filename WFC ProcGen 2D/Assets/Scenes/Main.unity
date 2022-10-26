@@ -159,11 +159,10 @@ MonoBehaviour:
   useDelayedCollapse: 1
   delay: 0
   usingComplexEdges: 1
-  width: 25
-  height: 25
+  width: 30
+  height: 30
   modules:
   - {fileID: 11400000, guid: 5b6ddf48c519aea45b5140cf86ade076, type: 2}
-  - {fileID: 11400000, guid: cf4954460bc248c4c93812e8b35884b9, type: 2}
   - {fileID: 11400000, guid: c29ec35e3d0c0e34489b91f9fa4a1c2f, type: 2}
   - {fileID: 11400000, guid: 88b5fbe855f51204788e43e9a1da6e81, type: 2}
   - {fileID: 11400000, guid: eac4abfedfc7e6b499686d8cda59f218, type: 2}
@@ -181,7 +180,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ba215f64453f9e4a831b939e83dfdd5, type: 2}
   - {fileID: 11400000, guid: f07005b58317399489964e3a4fa5b86d, type: 2}
   - {fileID: 11400000, guid: a4828263b73e0494d8ab4ebd7410328f, type: 2}
-  - {fileID: 11400000, guid: fe3645c92e7318f44a4f6b8b0d7a75cd, type: 2}
   - {fileID: 11400000, guid: 04ac4d5761e8f8946a87b5588f00397f, type: 2}
   - {fileID: 11400000, guid: 84a8a57268a60e24790873759f295b9d, type: 2}
   - {fileID: 11400000, guid: 634defcbbd0cc164499e564755aa24a8, type: 2}
@@ -194,15 +192,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cadb14eff8f14ec488cc9bb837e6b6e2, type: 2}
   - {fileID: 11400000, guid: 5ce7f211421de9841bbd219bfa4a6b16, type: 2}
   - {fileID: 11400000, guid: 1d59caaba4c5d284f973f06a72335abf, type: 2}
-  - {fileID: 11400000, guid: 03e278e8ca51e734bad1901dc5249ef7, type: 2}
-  - {fileID: 11400000, guid: f9098d947eb39654db8daf86863fe40b, type: 2}
-  - {fileID: 11400000, guid: 5e1fd25cf561a354a9b2b5b9d283d8ff, type: 2}
-  - {fileID: 11400000, guid: c0d82fb3b1de64d48a198e95395f425f, type: 2}
-  - {fileID: 11400000, guid: 0fdb9d590a02ea3409209e86560fd7d2, type: 2}
-  - {fileID: 11400000, guid: 79dff00aa4c9e9d469581ee769dc1be7, type: 2}
-  - {fileID: 11400000, guid: f7ee328a8c751af4b8ebd1b08a932f4f, type: 2}
-  - {fileID: 11400000, guid: a51e314cc4c1c544cbce8c5c36596737, type: 2}
-  - {fileID: 11400000, guid: 2fb2bd8008e320a48bf66494ff93db0d, type: 2}
   - {fileID: 11400000, guid: 1a6bf4f8a7fbc5447a9b58f63277abf0, type: 2}
   - {fileID: 11400000, guid: 6331cfc8f78d5d04abfb0eed4e8db207, type: 2}
   - {fileID: 11400000, guid: 6e1697014c8c7fc479aad71817c9e9cc, type: 2}
@@ -211,6 +200,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d1b17d7e74f51042b8bec62960f00cd, type: 2}
   - {fileID: 11400000, guid: 0e9c35ee0eb613f4cbaaf6d5f4d722f4, type: 2}
   - {fileID: 11400000, guid: 2cccb1a23c3db5044aa63a3426864d62, type: 2}
+  - {fileID: 11400000, guid: cac10e7596408794287ad4c79eab7f27, type: 2}
+  - {fileID: 11400000, guid: 685db2b945abf484ebfd5611093822f9, type: 2}
   tile: {fileID: 48608895130262063, guid: fbd94cb6205be774f9e467ea6a04dfdf, type: 3}
   orderedCells: []
 --- !u!4 &203494857
@@ -264,7 +255,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BackGroundColor: {r: 0.6415094, g: 0.35948732, b: 0.40476143, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

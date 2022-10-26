@@ -61,7 +61,7 @@ public class Cell : MonoBehaviour
         activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
         availableModules = new List<Module>();
         availableModules.Add(activeModule);
-        sRend.sprite = activeModule.tileSprite;
+        sRend.sprite = activeModule.GetRandomSprite();
         grid.orderedCells.Remove(this);
     }
 

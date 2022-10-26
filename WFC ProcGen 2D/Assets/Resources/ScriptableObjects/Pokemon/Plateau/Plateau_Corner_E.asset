@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
-  m_Name: Flowers_red_1
+  m_Name: Plateau_Corner_E
   m_EditorClassIdentifier: 
-  tag: 
-  weighting: 0.1
-  tileSprite: {fileID: 21300000, guid: c5b4030543662a84c81f8ed50561b471, type: 3}
+  weighting: 0.2
+  tileSprite: {fileID: 21300000, guid: 6095baccde03e0e4aac1f46aa66a20d0, type: 3}
+  spritePool: []
+  spritePoolWeighting: []
   edges:
   - code: ggg
-  - code: ggg
-  - code: ggg
+  - code: ppg
+  - code: ggp
   - code: ggg
