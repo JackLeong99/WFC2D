@@ -129,6 +129,8 @@ Things to adress for overall project:
     If not you need to go further back until one that had multiple options is reached and then continue from there.
     This requires an ordered list of collapsed tiles so that in case of failure it can read through these to find an appropriate place to start from.
     Implementing this in my algorithm is very doable however.
+        Update: Upon further research this a much bigger task than I thought and could be out of scope for this project, 
+        especially since it only increases the "effective" success rate of the algorithm (which is already good), but does not further my progress towards my prototype 3.
 
 Things to adress for achieving prototype 3:
     Without having looked at any examples of constraints beyond presetting certain tiles, my first instinct in achieving more logical generation is to add some kind of weighting to the random choices.
@@ -137,23 +139,35 @@ Things to adress for achieving prototype 3:
     By adding weighting to this choice, I should be able to encourage certain types of tiles and thus certain shapes.
     For context I am thinking about this in the context of the pokemon tileset. By weighting grass higher than ledges, I would be able to discourage lots of random and illogical looking edges.
 
+
     Update: I am testing a rudimenatry weighting system and this is my favourite line of code I've written so far:
+        activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
 
-    activeModule = entropy == 1 ? availableModules[0] : grid.useWeighting ? RandomWithWeight(availableModules) : availableModules[Random.Range(0, availableModules.Count)];
 
-    this redimentary weighting seems to produce something approaching the desired behaviour but is flawed in a few ways:
-        - TODO
+    My current weighting seems to produce something approaching the desired behaviour but is flawed in a few ways.
+    My Biggest gripe with my current generation is that I cant discourage certain things from generating together while still allowing them to be valid choices.
+    Again using this Pokemon tileset for an example. I dont like how at the moment, complete ledges can generate adjacent to eachother. 
+    If a horizonatal ledge generates, ideally I would like to prevent another from generating directly above or below it.
 
-    One idea I have to further encourage the correct behavious is something im calling "Likeness".
+
+    One idea I have to further encourage the correct behavious and avoid the problem above, is something im calling "Likeness".
     Each tile can have a category assigned to it and if a neighbouring tile falls into the same category then it gains an increased weighting.
     This however will require a more sophisticaed weighting system compared to what I have as of writing this.
+    Update: Having further improved the weighting system and having experimented with a rough implementation of this idea,
+    I belive the concept of a seconday adjacency condition could solve one of the problems I have with my algorithm although this exact approach will likely be far too much work for little reward.
+
 
     Another Idea is multi code edges allowing for more sophisticated adjacency.
 
+
     Another idea: fruthering propogation. At the moment, when a cell collapses, it only propogates information to the nearest cell. 
     By furthinging this such that all cells that should be updated are, before the next collapse, we can reduce the chance of failure greatly.
-    Update! This worked... to an extent. It does mitigate failure to a noticable degree however it does so at a significant performance cost.
+        Update: This worked... to an extent. It does mitigate failure to a noticable degree however it does so at a significant performance cost.
 
     Another major optimization thats easy to implement is combining tiles with the same edges by turning a tiles sprite into a list of sprites and randomly picking from that.
+        Update: I have now added this to great success. Not only has it significantly improved performance but it has also allowed for the addition of "sub weighting". 
+        For context: How it is currently set up is that any sprite that has the same set of edges (ie all grass and flower tiles), are stored in one tile. 
+        When this tile is placed it will then randomly pick from one of sprites. Sub weighting is simply refering to the addition of weighting values to this randomness.
+        This is MUCH faster than having one tile per sprite.
 
 ## week 13 - Finalising the project & report
