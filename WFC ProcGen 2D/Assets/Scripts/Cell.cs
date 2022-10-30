@@ -36,11 +36,11 @@ public class Cell : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !collapsed) 
+        if (Input.GetMouseButtonDown(0) && !grid.solving) 
         {
-            if (GetComponent<BoxCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition))) 
+            if (GetComponent<BoxCollider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)) && !collapsed) 
             {
-                //UpdateEntropy();
+                grid.solving = true;
                 Collapse();
             }
         }
@@ -48,6 +48,8 @@ public class Cell : MonoBehaviour
 
     public void SetPossibleModules() 
     {
+        GetComponent<BoxCollider2D>().size = grid.spriteSize;
+        if (grid.defaultSprite) GetComponent<SpriteRenderer>().sprite = grid.defaultSprite;
         for (var i = 0; i < grid.modules.Count; i++)
         {
             possibleModules.Add(grid.modules[i]);

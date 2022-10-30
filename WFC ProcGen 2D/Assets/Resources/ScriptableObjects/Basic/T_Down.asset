@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: T_Down
   m_EditorClassIdentifier: 
+  weighting: 1
   tileSprite: {fileID: 21300000, guid: ca6e5269f1a47e0489966945fbfd6ee6, type: 3}
+  spritePool: []
+  spritePoolWeighting: []
   edges:
   - code: a
   - code: a

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Sand_Edge_A
   m_EditorClassIdentifier: 
-  weighting: 2
+  weighting: 0.5
   tileSprite: {fileID: 21300000, guid: acf2476a4482d2d4688ece39881be760, type: 3}
   spritePool: []
   spritePoolWeighting: []

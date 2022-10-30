@@ -5,46 +5,55 @@ using UnityEngine;
 public class GridBuilder : MonoBehaviour
 {
     public static GridBuilder instance;
+    [HideInInspector]
+    public bool solving;
     [Header("Can be changed at runtime")]
     public bool autoRestart;
     [HideInInspector]
     public bool autoCollapse;
     public bool useWeighting;
+    [Space(16)]
     [Tooltip("Upping this to 2 greatly reduces performance")]
     [Range(0, 2)]
     public int propagationDistance;
+    [Space(16)]
     public bool useDelayedCollapse;
+    [Range(0, 100)]
     public float delay;
+    [Space(16)]
+    public int width;
+    public int height;
 
     [Header("Set Before runtime")]
     public bool usingComplexEdges;
-    public int width;
-    public int height;
     [Space(16)]
+    public ModuleSet set;
     public List<Module> modules;
-
-    [Header("Default tile object based on tileset resolution")]
-    public GameObject tile;
 
     public Cell[,] cells;
     [HideInInspector]
     public List<Cell> orderedCells;
-    private Vector2 spriteSize;
-    private Camera _camera;
+
+    [Header("Tile")]
+    [Tooltip("Default Sprite if desired")]
+    public Sprite defaultSprite;
+    [HideInInspector]
+    public Vector2 spriteSize;
+    public GameObject tile;
+
+    private float camSize;
 
     private void Awake()
     {
+        //Static instance isn't used at the moment but is kept to remind me once I get around to refactoring.
         if(!instance)
             instance = this;
+
+        camSize = Camera.main.orthographicSize;
     }
 
     void Start()
     {
-        if (useWeighting) modules.Sort((a, b) => b.weighting.CompareTo(a.weighting));
-        //Automatically get the dimensions of the first modules sprite and convert it to a Vector2 for spacing the cells
-        spriteSize = new Vector2(modules[0].tileSprite.rect.size.x / 100f, modules[0].tileSprite.rect.size.y / 100f);
-        Debug.Log("x: " + modules[0].tileSprite.rect.size.x / 100f + ". y: " + modules[0].tileSprite.rect.size.y / 100f);
-        SetCamera();
         GenerateGrid();
     }
 
@@ -57,30 +66,22 @@ public class GridBuilder : MonoBehaviour
         }
     }
 
-    public void SetCamera() 
-    {
-        _camera = Camera.main;
-        _camera.orthographicSize = (height * (spriteSize.x/2)) + 0.2f;
-    }
-
     public void GenerateGrid() 
     {
-        Reset();
+        GridReset();
 
         cells = new Cell[width, height];
 
-        var scale = spriteSize;
-        var origin = transform.position;
         var bottomLeft = new Vector2
             (
-                origin.x - width * scale.x / 2f + scale.x / 2,
-                origin.y - height * scale.y / 2f + scale.y / 2
+                transform.position.x - width * spriteSize.x / 2f + spriteSize.x / 2,
+                transform.position.y - height * spriteSize.y / 2f + spriteSize.y / 2
             );
 
         for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)
             {
-                var curPos = new Vector2(bottomLeft.x + x * scale.x, bottomLeft.y + y * scale.y);
+                var curPos = new Vector2(bottomLeft.x + x * spriteSize.x, bottomLeft.y + y * spriteSize.y);
 
                 var cellObj = Instantiate(tile, curPos, Quaternion.identity, gameObject.transform);
                 cellObj.name = $"({x}, {y})";
@@ -104,6 +105,8 @@ public class GridBuilder : MonoBehaviour
                 }
             }
         FlattenCells();
+        //SetScale has to happen after the cells are generated which is why it cant be a part of reset.
+        SetScale();
         if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
     }
 
@@ -117,12 +120,21 @@ public class GridBuilder : MonoBehaviour
             }
     }
 
-    public void Reset()
+    public void GridReset()
     {
-        foreach (Transform child in gameObject.transform) 
-        {
-            Destroy(child.gameObject);
-        }
+        spriteSize = set.GetSetDimensions();
+        modules = new List<Module>();
+        modules.AddRange(set.modules);
+        if (useWeighting) modules.Sort((a, b) => b.weighting.CompareTo(a.weighting));
+        foreach (Transform child in gameObject.transform) Destroy(child.gameObject);
+        gameObject.transform.localScale = new Vector2(1, 1);
+    }
+
+    public void SetScale()
+    {
+        float ratio = width > height ? (10f / width) * camSize : (10f / height) * camSize;
+        ratio *= (0.16f / spriteSize.x);
+        gameObject.transform.localScale = new Vector2(ratio, ratio);
     }
 
     public void next() 
@@ -130,6 +142,7 @@ public class GridBuilder : MonoBehaviour
         if (orderedCells.Count == 0)
         {
             Debug.Log("Done!");
+            solving = false;
             autoCollapse = false;
             return;
         }

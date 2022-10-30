@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(menuName = "Tile/New Tile")]
+[CreateAssetMenu(menuName = "Module/New Module")]
 
 public class Module : ScriptableObject
 {
