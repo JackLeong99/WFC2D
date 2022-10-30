@@ -125,7 +125,6 @@ public class GridBuilder : MonoBehaviour
         spriteSize = set.GetSetDimensions();
         modules = new List<Module>();
         modules.AddRange(set.modules);
-        if (useWeighting) modules.Sort((a, b) => b.weighting.CompareTo(a.weighting));
         foreach (Transform child in gameObject.transform) Destroy(child.gameObject);
         gameObject.transform.localScale = new Vector2(1, 1);
     }

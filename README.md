@@ -170,4 +170,14 @@ Things to adress for achieving prototype 3:
         When this tile is placed it will then randomly pick from one of sprites. Sub weighting is simply refering to the addition of weighting values to this randomness.
         This is MUCH faster than having one tile per sprite.
 
+TODO before report:
+
+    (In order of highest to lowest priority)    
+
+    - Close out any thoughts above
+    - Add remaining tiles to pokemon tileset
+    - Add overlay generation (optional)
+    - Add controllable character (optional)
+    - Improve sorting method (optional)
+
 ## week 13 - Finalising the project & report
