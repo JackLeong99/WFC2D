@@ -17,9 +17,10 @@ public class GridBuilder : MonoBehaviour
     [Range(0, 2)]
     public int propagationDistance;
     [Space(16)]
-    public bool useDelayedCollapse;
-    [Range(0, 100)]
+    [Range(-1, 5)]
     public float delay;
+    [HideInInspector]
+    public bool useDelayedCollapse;
     [Space(16)]
     public int width;
     public int height;
@@ -35,11 +36,9 @@ public class GridBuilder : MonoBehaviour
     public List<Cell> orderedCells;
 
     [Header("Tile")]
-    [Tooltip("Default Sprite if desired")]
-    public Sprite defaultSprite;
+    public GameObject tile;
     [HideInInspector]
     public Vector2 spriteSize;
-    public GameObject tile;
 
     private float camSize;
 
@@ -64,6 +63,7 @@ public class GridBuilder : MonoBehaviour
             autoCollapse = true;
             GenerateGrid();
         }
+        useDelayedCollapse = delay >= 0 ? true : false;
     }
 
     public void GenerateGrid() 
@@ -109,6 +109,31 @@ public class GridBuilder : MonoBehaviour
         SetScale();
         if (autoCollapse) orderedCells[Random.Range(0, orderedCells.Count)].Collapse(); 
     }
+    public void next()
+    {
+        if (orderedCells.Count == 0)
+        {
+            Debug.Log("Done!");
+            solving = false;
+            autoCollapse = false;
+            return;
+        }
+        //This sorting method is pretty inefficient and causes stackoverflow errors when solving larger grids.
+        //For example attempting to solve a 100x100 grid without the use of "delayed collapse" aka coroutines always leads to a stack overflow error.
+        //its possible that this sorting method should only be used for first sort then once everything is relatively in order a different method should be used???
+        orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
+        orderedCells[Random.Range(0, getLow(orderedCells))].Collapse();
+    }
+
+    public int getLow(List<Cell> cl)
+    {
+        int l = 1;
+        foreach (Cell c in cl)
+        {
+            if (c.entropy > l) return cl.IndexOf(c) - 1;
+        }
+        return 0;
+    }
 
     public void FlattenCells()
     {
@@ -136,29 +161,8 @@ public class GridBuilder : MonoBehaviour
         gameObject.transform.localScale = new Vector2(ratio, ratio);
     }
 
-    public void next() 
+    public void SetDelay(float d) 
     {
-        if (orderedCells.Count == 0)
-        {
-            Debug.Log("Done!");
-            solving = false;
-            autoCollapse = false;
-            return;
-        }
-        //This sorting method is pretty inefficient and causes stackoverflow errors when solving larger grids.
-        //For example attempting to solve a 100x100 grid without the use of "delayed collapse" aka coroutines always leads to a stack overflow error.
-        //its possible that this sorting method should only be used for first sort then once everything is relatively in order a different method should be used???
-        orderedCells.Sort((a, b) => a.entropy.CompareTo(b.entropy));
-        orderedCells[Random.Range(0, getLow(orderedCells))].Collapse();
-    }
-
-    public int getLow(List<Cell> cl) 
-    {
-        int l = 1;
-        foreach (Cell c in cl) 
-        {
-            if (c.entropy > l) return cl.IndexOf(c) - 1;
-        }
-        return 0;
+        delay = d;
     }
 }

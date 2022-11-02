@@ -13,7 +13,7 @@ public class Cell : MonoBehaviour
     public int entropy;
 
     public List<Module> possibleModules;
-    [HideInInspector]
+
     public List<Module> availableModules;
 
     public Module activeModule;
@@ -49,7 +49,6 @@ public class Cell : MonoBehaviour
     public void SetPossibleModules() 
     {
         GetComponent<BoxCollider2D>().size = grid.spriteSize;
-        if (grid.defaultSprite) GetComponent<SpriteRenderer>().sprite = grid.defaultSprite;
         for (var i = 0; i < grid.modules.Count; i++)
         {
             possibleModules.Add(grid.modules[i]);
@@ -145,21 +144,21 @@ public class Cell : MonoBehaviour
 
     public void UpdateEntropy(int gen)
     {
-        int incompatabilityCount = 0;
         for (int i = 0; i < neighbours.Length; i++)
         {
             if (neighbours[i] == null) continue;
             for (int m = 0; m < possibleModules.Count; m++)
             {
-                incompatabilityCount = 0;
+                bool foundCompatible = false;
                 for (int n = 0; n < neighbours[i].availableModules.Count; n++)
                 {
-                    if (!possibleModules[m].edges[i].Compatible(neighbours[i].availableModules[n].edges[(i + 2) % 4], grid.usingComplexEdges))
+                    if (possibleModules[m].edges[i].Compatible(neighbours[i].availableModules[n].edges[(i + 2) % 4], grid.usingComplexEdges))
                     {
-                        incompatabilityCount++;
+                        foundCompatible = true;
+                        break;
                     }
                 }
-                if (incompatabilityCount == neighbours[i].availableModules.Count)
+                if (!foundCompatible)
                     availableModules.Remove(possibleModules[m]);
             }
         }
@@ -201,7 +200,7 @@ public class Cell : MonoBehaviour
 
     public IEnumerator DelayedCollapse() 
     {
-        yield return new WaitForSeconds(grid.delay/100);
+        yield return new WaitForSeconds(grid.delay/5f);
         SetModule();
         collapsed = true;
         Propagate();

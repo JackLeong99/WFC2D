@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Plateau_Edge_C
   m_EditorClassIdentifier: 
-  tag: 
-  weighting: 3
+  weighting: 2
   tileSprite: {fileID: 21300000, guid: 60c63eed118926a45a86f6d4c1e7c6b9, type: 3}
+  spritePool: []
+  spritePoolWeighting: []
   edges:
   - code: ggp
   - code: ggg

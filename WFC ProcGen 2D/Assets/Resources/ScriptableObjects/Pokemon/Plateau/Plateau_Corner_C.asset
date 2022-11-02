@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f9c9c3af28b844a188058bee85ac9, type: 3}
   m_Name: Plateau_Corner_C
   m_EditorClassIdentifier: 
-  weighting: 0.01
+  weighting: 0.05
   tileSprite: {fileID: 21300000, guid: 6095baccde03e0e4aac1f46aa66a20d0, type: 3}
   spritePool: []
   spritePoolWeighting: []
