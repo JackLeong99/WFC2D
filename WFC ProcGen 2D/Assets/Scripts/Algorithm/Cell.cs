@@ -200,7 +200,7 @@ public class Cell : MonoBehaviour
 
     public IEnumerator DelayedCollapse() 
     {
-        yield return new WaitForSeconds(grid.delay/5f);
+        yield return new WaitForSeconds(grid.delay/4f);
         SetModule();
         collapsed = true;
         Propagate();

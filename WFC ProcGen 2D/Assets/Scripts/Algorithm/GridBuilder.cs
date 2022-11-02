@@ -17,7 +17,7 @@ public class GridBuilder : MonoBehaviour
     [Range(0, 2)]
     public int propagationDistance;
     [Space(16)]
-    [Range(-1, 5)]
+    [Range(-1, 4)]
     public float delay;
     [HideInInspector]
     public bool useDelayedCollapse;
@@ -40,15 +40,11 @@ public class GridBuilder : MonoBehaviour
     [HideInInspector]
     public Vector2 spriteSize;
 
-    private float camSize;
-
     private void Awake()
     {
         //Static instance isn't used at the moment but is kept to remind me once I get around to refactoring.
         if(!instance)
             instance = this;
-
-        camSize = Camera.main.orthographicSize;
     }
 
     void Start()
@@ -58,11 +54,7 @@ public class GridBuilder : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("r")) 
-        {
-            autoCollapse = true;
-            GenerateGrid();
-        }
+        //Automatically switches from instant solve to coroutine depending on delay value
         useDelayedCollapse = delay >= 0 ? true : false;
     }
 
@@ -127,7 +119,7 @@ public class GridBuilder : MonoBehaviour
 
     public int getLow(List<Cell> cl)
     {
-        int l = 1;
+        int l = cl[0].entropy;
         foreach (Cell c in cl)
         {
             if (c.entropy > l) return cl.IndexOf(c) - 1;
@@ -152,22 +144,13 @@ public class GridBuilder : MonoBehaviour
         modules.AddRange(set.modules);
         foreach (Transform child in gameObject.transform) Destroy(child.gameObject);
         gameObject.transform.localScale = new Vector2(1, 1);
+        solving = false;
     }
 
     public void SetScale()
     {
-        float ratio = width > height ? (10f / width) * camSize : (10f / height) * camSize;
+        float ratio = width > height ? (10f / width) : (10f / height);
         ratio *= (0.16f / spriteSize.x);
         gameObject.transform.localScale = new Vector2(ratio, ratio);
-    }
-
-    public void SetDelay(float d) 
-    {
-        delay = d;
-    }
-
-    public string GetDelayAsString() 
-    {
-        return (delay + 1).ToString();
     }
 }
