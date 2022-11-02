@@ -165,4 +165,9 @@ public class GridBuilder : MonoBehaviour
     {
         delay = d;
     }
+
+    public string GetDelayAsString() 
+    {
+        return (delay + 1).ToString();
+    }
 }
