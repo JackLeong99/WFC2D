@@ -174,10 +174,13 @@ TODO before report:
 
     (In order of highest to lowest priority)    
 
-    - Close out any thoughts above
-    - Add remaining tiles to pokemon tileset
-    - Add overlay generation (optional)
-    - Add controllable character (optional)
-    - Improve sorting method (optional)
+    - Close out any thoughts above [Incomplete]
+    - Add remaining tiles to pokemon tileset [Complete]
+    - Add overlay generation (optional) [Dropped]
+    - Add controllable character (optional) [Dropped]
+    - Improve sorting method (optional) [Dropped*]
+    - (New) Added a UI 
+    
+    *Dropped due to discovering that the issue was more likely to do with the number of game objects rather than the sorting method, although it still stands that it could be improved for speed.
 
 ## week 13 - Finalising the project & report
