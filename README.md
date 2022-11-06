@@ -1,5 +1,7 @@
 # comp3180-project
 
+All credits for Pokemon sprites go to  Nintendo and The Pokemon  Company.
+
 Included is a rough timeline below. Fill this in from week to week to show your progress throughout semester
 
 ## week 1 - Selecting a Project
