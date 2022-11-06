@@ -1,11 +1,11 @@
-#User Documentation
+# User Documentation
 
 All credits for Pokemon sprites go to  Nintendo and The Pokemon  Company.
 
 This tool can be used to generate landscapes, side on levels and textures along a 2D plane. 
 Included in the project are two pre-made tile sets, one of which is a simple set of lines that is more demonstrative of the texture generation ability while the other is demonstrative of the terrain generation ability.
 
-##Scripts
+## Scripts
 The main part of this is the Grid builder script which needs to be attached to an empty gameobject.
 In this script you will find a few options:
 - auto restart, which will make the grid automatically reset when a failed state is encountered
@@ -31,7 +31,7 @@ Unfortunately Unity does not render dictionaries in the inspector and so in orde
 Edges are used to determine how tiles are allowed to connect. Edges are counterclockwise from the bottom meaning the first edge represents the bottom most edge where the last represents the left most edge.
 Edge codes can be as long or short as desired and an edge can connect to another with the same code. For example ABA can connect to another ABA but not a ABB. To understand this better it is best to observe the provided tile modules to see how the codes relate to the sprites.
 
-##Using this outside of the project
+## Using this outside of the project
 Note that when using this outside of the context of the provided project the set scale function is not necessary although may prove useful as it only make sure that the grid fits into the same space regardless of grid dimensions.
 
 It is possible to Modify this to work in a 3D project by simply changing the coordinates from vector2s to vector3s in the code, namely the GridBuilder script. 
